@@ -172,12 +172,17 @@ public class Main
         String sql = "SELECT SUM(amount) FROM expenses";
 
         try (Statement stmt = conx.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            if (rs.next()) {
+             ResultSet rs = stmt.executeQuery(sql))
+        {
+            if (rs.next())
+            {
                 int total = rs.getInt(1);
-                System.out.println("💰 Total Spending: " + total);
+                System.out.println("Total Spending: " + total);
+            } else {
+                System.out.println("No expenses found.");
             }
-        } catch (SQLException e) {
+        } catch (SQLException e)
+        {
             System.out.println("Could not calculate total spending: " + e.getMessage());
         }
     }
