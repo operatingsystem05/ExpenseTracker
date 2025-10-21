@@ -3,10 +3,12 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
 
-public class Main {
+public class Main
+{
     private static final String filePath = "src" + File.separator + "config.properties";
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Properties props = new Properties();
 
         try (FileInputStream fis = new FileInputStream(filePath)) {
@@ -54,7 +56,8 @@ public class Main {
         }
     }
 
-    private static void createTable(Connection conx) {
+    private static void createTable(Connection conx)
+    {
         String sql = """
                 CREATE TABLE IF NOT EXISTS expenses (
                     id SERIAL PRIMARY KEY,
@@ -72,7 +75,8 @@ public class Main {
         }
     }
 
-    private static void addExpenses(Connection conx, Scanner sc) {
+    private static void addExpenses(Connection conx, Scanner sc)
+    {
         System.out.print("Enter expense category: ");
         String category = sc.nextLine().trim();
 
@@ -130,7 +134,8 @@ public class Main {
         }
     }
 
-    private static void filterByCategory(Connection conx, Scanner sc) {
+    private static void filterByCategory(Connection conx, Scanner sc)
+    {
         System.out.print("Enter category to filter: ");
         String category = sc.nextLine().trim();
 
@@ -162,7 +167,8 @@ public class Main {
         }
     }
 
-    private static void totalExpenses(Connection conx) {
+    private static void totalExpenses(Connection conx)
+    {
         String sql = "SELECT SUM(amount) FROM expenses";
 
         try (Statement stmt = conx.createStatement();
@@ -176,7 +182,8 @@ public class Main {
         }
     }
 
-    static class Expense {
+    static class Expense
+    {
         private int id;
         private String category;
         private int amount;
